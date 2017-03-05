@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.starsep.rrbridge_bidding_data.gui.BWSChoosePanel">
+  <grid id="27dc6" binding="bwsChoosePanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="613" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="b6f98" class="javax.swing.JLabel">
+        <constraints/>
+        <properties>
+          <text value="BWS location:"/>
+        </properties>
+      </component>
+      <component id="dc281" class="javax.swing.JTextField" binding="bwsTextField">
+        <constraints/>
+        <properties>
+          <columns value="35"/>
+        </properties>
+      </component>
+      <component id="cf617" class="javax.swing.JButton" binding="chooseButton" default-binding="true">
+        <constraints/>
+        <properties>
+          <text value="Choose"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
