@@ -8,4 +8,20 @@ public interface ITranslation {
     String language();
 
     String choose();
+
+    String bwsLabel();
+
+    String directory();
+
+    String usage();
+
+    String launching();
+
+    String guiMode();
+
+    String consoleMode();
+
+    String insufficientArgumentsNumberError();
+
+    String error();
 }

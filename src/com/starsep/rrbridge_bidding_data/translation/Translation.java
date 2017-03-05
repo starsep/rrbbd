@@ -1,6 +1,6 @@
 package com.starsep.rrbridge_bidding_data.translation;
 
-import com.starsep.rrbridge_bidding_data.Main;
+import com.starsep.rrbridge_bidding_data.core.Main;
 
 public abstract class Translation {
     public static ITranslation get() {

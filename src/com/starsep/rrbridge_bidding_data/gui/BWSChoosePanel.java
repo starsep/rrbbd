@@ -1,20 +1,28 @@
 package com.starsep.rrbridge_bidding_data.gui;
 
-import com.starsep.rrbridge_bidding_data.translation.Translation;
+import com.starsep.rrbridge_bidding_data.translation.*;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import java.io.File;
 
-public class BWSChoosePanel extends JPanel {
+public class BWSChoosePanel extends JPanel implements ITranslatable {
     private JPanel bwsChoosePanel;
     private JButton chooseButton;
     private JTextField bwsTextField;
+    private JLabel bwsLabel;
 
     BWSChoosePanel() {
         super();
         chooseButton.addActionListener(e -> showBWSDialog());
         add(bwsChoosePanel);
+        Translatable.add(this);
+    }
+
+    @Override
+    public void translate() {
+        bwsLabel.setText(Translation.get().bwsLabel() + ":");
+        chooseButton.setText(Translation.get().choose());
     }
 
     private class BWSFileFilter extends FileFilter {

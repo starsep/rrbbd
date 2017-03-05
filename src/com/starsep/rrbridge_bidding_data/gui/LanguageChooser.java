@@ -1,6 +1,6 @@
 package com.starsep.rrbridge_bidding_data.gui;
 
-import com.starsep.rrbridge_bidding_data.Main;
+import com.starsep.rrbridge_bidding_data.core.Main;
 import com.starsep.rrbridge_bidding_data.translation.*;
 
 import javax.swing.*;
@@ -18,14 +18,6 @@ public class LanguageChooser extends JPanel implements ITranslatable {
         polishButton.addActionListener(e -> setPolish());
         add(languageChooserPanel);
         Translatable.add(this);
-    }
-
-    private void setEnglish() {
-        Main.setLocale(new Locale("en"));
-    }
-
-    private void setPolish() {
-        Main.setLocale(new Locale("pl"));
     }
 
     @Override

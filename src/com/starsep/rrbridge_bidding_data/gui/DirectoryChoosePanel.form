@@ -7,7 +7,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="82891" class="javax.swing.JLabel">
+      <component id="82891" class="javax.swing.JLabel" binding="directoryLabel">
         <constraints/>
         <properties>
           <text value="RRBridge work directory:"/>

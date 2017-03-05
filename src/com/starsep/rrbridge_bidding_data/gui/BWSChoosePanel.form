@@ -7,7 +7,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="b6f98" class="javax.swing.JLabel">
+      <component id="b6f98" class="javax.swing.JLabel" binding="bwsLabel">
         <constraints/>
         <properties>
           <text value="BWS location:"/>

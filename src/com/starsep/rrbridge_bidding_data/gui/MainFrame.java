@@ -1,6 +1,6 @@
 package com.starsep.rrbridge_bidding_data.gui;
 
-import com.starsep.rrbridge_bidding_data.Main;
+import com.starsep.rrbridge_bidding_data.core.Main;
 import com.starsep.rrbridge_bidding_data.translation.*;
 
 import javax.swing.*;
