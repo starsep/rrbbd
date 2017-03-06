@@ -1,3 +1,7 @@
+plugins {
+  id "me.tatarka.retrolambda" version "3.6.0"
+}
+
 group 'com.starsep'
 version '0.0.1'
 
@@ -8,8 +12,8 @@ repositories {
     mavenCentral()
 }
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 mainClassName = 'com.starsep.rrbridge_bidding_data.core.Main'
 
