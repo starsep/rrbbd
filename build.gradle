@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.starsep'
-version '0.0.1'
+version '0.0.2'
 
 apply plugin: 'java'
 apply plugin: 'application'
@@ -46,3 +46,12 @@ task fatJar(type: Jar) {
     with jar
 }
 
+task createBuildInfoFile(dependsOn: processResources) << {
+    def buildInfoFile = new File("$buildDir/resources/main/build.properties")
+    Properties props = new Properties()
+    props.setProperty('version', project.version.toString())
+    props.store(buildInfoFile.newWriter(), null)
+}
+classes {
+    dependsOn createBuildInfoFile
+}
