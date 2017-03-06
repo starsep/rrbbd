@@ -1,5 +1,6 @@
 package com.starsep.rrbridge_bidding_data.translation;
 
+import com.starsep.rrbridge_bidding_data.core.Arguments;
 import com.starsep.rrbridge_bidding_data.core.Main;
 
 class English implements ITranslation {
@@ -45,9 +46,9 @@ class English implements ITranslation {
         result += "\ttime is time [in seconds] to wait after every files generation\n";
         result += "\t\tto generate once use -1\n";
         result += "Additional flags:\n";
-        result += "\t" + Main.ENGLISH_FLAG + " = English language\n";
-        result += "\t" + Main.POLISH_FLAG + " = Polish language\n";
-        result += "\t" + Main.NO_GUI_FLAG + " = launch " + consoleMode() + "\n";
+        result += "\t" + Arguments.ENGLISH_FLAG + " = English language\n";
+        result += "\t" + Arguments.POLISH_FLAG + " = Polish language\n";
+        result += "\t" + Arguments.NO_GUI_FLAG + " = launch " + consoleMode() + "\n";
         return result;
     }
 

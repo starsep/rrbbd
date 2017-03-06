@@ -4,11 +4,8 @@ import com.starsep.rrbridge_bidding_data.translation.Translatable;
 import com.starsep.rrbridge_bidding_data.translation.Translation;
 import com.starsep.rrbridge_bidding_data.gui.MainGUI;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
 
@@ -19,24 +16,28 @@ public class Main {
     private static final String BUILD_PROPERTIES_FILENAME = "build.properties";
     private static final String VERSION_KEY = "version";
 
-    public static final String NO_GUI_FLAG = "--no-gui";
-    public static final String ENGLISH_FLAG = "--english";
-    public static final String POLISH_FLAG = "--polish";
+    private static final int DEFAULT_WAIT_TIME = 60;
 
     private static Locale locale;
-    private static boolean guiEnabled;
+    private static boolean guiEnabled = true;
+    private static String workingDirectory = "";
+    private static String bwsFilename = "";
+    private static int waitTime = DEFAULT_WAIT_TIME;
 
     public static void main(String[] args) {
-        guiEnabled = true;
-        eraseFlags(args);
+        Arguments.init(args);
         if (locale == null) {
             setLocale(new Locale("pl"));
         }
+        launch();
+    }
+
+    private static void launch() {
         launchingInfo();
         if (guiEnabled) {
             MainGUI.launchGUI();
         } else {
-            Console.launch(args);
+            Console.launch();
         }
     }
 
@@ -44,7 +45,7 @@ public class Main {
         System.out.print(Translation.get().launching() + " " + PROGRAM_NAME + " v" + getVersion());
         System.out.println(" " + (guiEnabled ? Translation.get().guiMode() : Translation.get().consoleMode()));
         if (!locale.getLanguage().contains("en")) {
-            System.out.println("For English use " + ENGLISH_FLAG);
+            System.out.println("For English use " + Arguments.ENGLISH_FLAG);
         }
         System.out.println("");
         printUsage();
@@ -52,35 +53,6 @@ public class Main {
 
     private static void printUsage() {
         System.out.print(Translation.get().usage());
-    }
-
-    private static void checkFlag(String flag) {
-        switch (flag) {
-            case NO_GUI_FLAG:
-                guiEnabled = false;
-                break;
-            case ENGLISH_FLAG:
-                setEnglish();
-                break;
-            case POLISH_FLAG:
-                setPolish();
-                break;
-        }
-    }
-
-    private static void eraseFlags(String[] args) {
-        List<String> nonFlagArguments = new ArrayList<>();
-        for (String arg : args) {
-            if (!arg.startsWith("-")) {
-                nonFlagArguments.add(arg);
-            } else {
-                checkFlag(arg);
-            }
-        }
-        args = new String[nonFlagArguments.size()];
-        for (int i = 0; i < args.length; i++) {
-            args[i] = nonFlagArguments.get(i);
-        }
     }
 
     public static Locale getLocale() {
@@ -125,5 +97,33 @@ public class Main {
             initBuildProperties();
         }
         return buildProperties.getProperty(VERSION_KEY);
+    }
+
+    static void disableGUI() {
+        guiEnabled = false;
+    }
+
+    public static void setWorkingDirectory(String directory) {
+        workingDirectory = directory;
+    }
+
+    public static String getWorkingDirectory() {
+        return workingDirectory;
+    }
+
+    public static void setBWSFilename(String filename) {
+        bwsFilename = filename;
+    }
+
+    public static String getBwsFilename() {
+        return bwsFilename;
+    }
+
+    public static void setWaitTime(int time) {
+        waitTime = time;
+    }
+
+    public static int getWaitTime() {
+        return waitTime;
     }
 }

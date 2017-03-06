@@ -1,6 +1,6 @@
 package com.starsep.rrbridge_bidding_data.translation;
 
-import com.starsep.rrbridge_bidding_data.core.Main;
+import com.starsep.rrbridge_bidding_data.core.Arguments;
 
 class Polish implements ITranslation {
     @Override
@@ -44,9 +44,9 @@ class Polish implements ITranslation {
         result += "\tczas to czas [w sekundach], odczekiwany po każdym wygenerowaniu plików z licytacją\n";
         result += "\t\taby wygenerować tylko raz użyj -1\n";
         result += "Dodatkowe flagi:\n";
-        result += "\t" + Main.ENGLISH_FLAG + " = język angielski\n";
-        result += "\t" + Main.POLISH_FLAG + " = język polski\n";
-        result += "\t" + Main.NO_GUI_FLAG + " = uruchom " + consoleMode() + "\n";
+        result += "\t" + Arguments.ENGLISH_FLAG + " = język angielski\n";
+        result += "\t" + Arguments.POLISH_FLAG + " = język polski\n";
+        result += "\t" + Arguments.NO_GUI_FLAG + " = uruchom " + consoleMode() + "\n";
         return result;
     }
 

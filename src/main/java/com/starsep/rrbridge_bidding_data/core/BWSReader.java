@@ -15,7 +15,9 @@ public class BWSReader {
         bws = file;
         Table table = DatabaseBuilder.open(bws).getTable(BIDDING_TABLE);
         for (Row row : table) {
-            System.err.print(row.toString());
+            if (row.getShort("Board") == 1) {
+                System.err.println(row);
+            }
         }
     }
 }

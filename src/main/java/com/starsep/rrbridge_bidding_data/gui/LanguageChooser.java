@@ -29,7 +29,6 @@ public class LanguageChooser extends JPanel implements ITranslatable {
         add(polishButton);
 
         englishButton = new JButton();
-        englishButton.setHideActionText(false);
         englishButton.setIcon(new ImageIcon(getClass().getResource("/icons/gb.png")));
         englishButton.setText("English");
         englishButton.addActionListener(e -> Main.setEnglish());
