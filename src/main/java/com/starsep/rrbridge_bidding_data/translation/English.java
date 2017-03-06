@@ -76,4 +76,9 @@ class English implements ITranslation {
     public String error() {
         return "Error";
     }
+
+    @Override
+    public String run() {
+        return "Run";
+    }
 }

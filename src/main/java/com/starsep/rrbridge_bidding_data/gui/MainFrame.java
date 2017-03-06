@@ -15,6 +15,7 @@ class MainFrame extends JFrame implements ITranslatable {
         setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
         add(new DirectoryChoosePanel());
         add(new BWSChoosePanel());
+        add(new RunPanel());
         add(new LanguageChooser());
         Translatable.add(this);
     }

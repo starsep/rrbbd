@@ -74,4 +74,9 @@ class Polish implements ITranslation {
     public String error() {
         return "Błąd";
     }
+
+    @Override
+    public String run() {
+        return "Uruchom";
+    }
 }

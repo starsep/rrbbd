@@ -4,6 +4,7 @@ import com.starsep.rrbridge_bidding_data.translation.Translatable;
 import com.starsep.rrbridge_bidding_data.translation.Translation;
 import com.starsep.rrbridge_bidding_data.gui.MainGUI;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Locale;
@@ -20,8 +21,8 @@ public class Main {
 
     private static Locale locale;
     private static boolean guiEnabled = true;
-    private static String workingDirectory = "";
-    private static String bwsFilename = "";
+    private static File workingDirectory = null;
+    private static File bwsFile = null;
     private static int waitTime = DEFAULT_WAIT_TIME;
 
     public static void main(String[] args) {
@@ -103,20 +104,20 @@ public class Main {
         guiEnabled = false;
     }
 
-    public static void setWorkingDirectory(String directory) {
+    public static void setWorkingDirectory(File directory) {
         workingDirectory = directory;
     }
 
-    public static String getWorkingDirectory() {
+    public static File getWorkingDirectory() {
         return workingDirectory;
     }
 
-    public static void setBWSFilename(String filename) {
-        bwsFilename = filename;
+    public static void setBWSFile(File file) {
+        bwsFile = file;
     }
 
-    public static String getBwsFilename() {
-        return bwsFilename;
+    public static File getBwsFile() {
+        return bwsFile;
     }
 
     public static void setWaitTime(int time) {

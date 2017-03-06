@@ -10,8 +10,6 @@ import java.awt.*;
 import java.util.Locale;
 
 public class LanguageChooser extends JPanel implements ITranslatable {
-    private JButton englishButton;
-    private JButton polishButton;
     private JLabel languageLabel;
 
     LanguageChooser() {
@@ -22,13 +20,13 @@ public class LanguageChooser extends JPanel implements ITranslatable {
         languageLabel.setText("Language:");
         add(languageLabel);
 
-        polishButton = new JButton();
+        JButton polishButton = new JButton();
         polishButton.setIcon(new ImageIcon(getClass().getResource("/icons/pl.png")));
         polishButton.setText("Polski");
         polishButton.addActionListener(e -> Main.setPolish());
         add(polishButton);
 
-        englishButton = new JButton();
+        JButton englishButton = new JButton();
         englishButton.setIcon(new ImageIcon(getClass().getResource("/icons/gb.png")));
         englishButton.setText("English");
         englishButton.addActionListener(e -> Main.setEnglish());

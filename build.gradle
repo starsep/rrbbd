@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.starsep'
-version '0.0.3'
+version '0.1.0'
 
 apply plugin: 'java'
 apply plugin: 'application'
@@ -18,6 +18,7 @@ targetCompatibility = 1.8
 mainClassName = 'com.starsep.rrbridge_bidding_data.core.Main'
 
 dependencies {
+    compile 'com.google.code.gson:gson:2.8.0'
     compile group: 'com.healthmarketscience.jackcess', name: 'jackcess', version: '2.1.2'
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }

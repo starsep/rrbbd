@@ -1,6 +1,7 @@
 package com.starsep.rrbridge_bidding_data.gui;
 
 import com.starsep.rrbridge_bidding_data.core.BWSReader;
+import com.starsep.rrbridge_bidding_data.core.Main;
 import com.starsep.rrbridge_bidding_data.translation.ITranslatable;
 import com.starsep.rrbridge_bidding_data.translation.Translatable;
 import com.starsep.rrbridge_bidding_data.translation.Translation;
@@ -59,11 +60,7 @@ public class BWSChoosePanel extends JPanel implements ITranslatable {
         if (bwsDialog.showDialog(getParent(), bwsApproveText) == JFileChooser.APPROVE_OPTION) {
             File file = bwsDialog.getSelectedFile();
             bwsTextField.setText(file.toString());
-            try {
-                new BWSReader(file);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Main.setBWSFile(file);
         }
     }
 }

@@ -24,4 +24,6 @@ public interface ITranslation {
     String insufficientArgumentsNumberError();
 
     String error();
+
+    String run();
 }

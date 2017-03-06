@@ -1,5 +1,6 @@
 package com.starsep.rrbridge_bidding_data.gui;
 
+import com.starsep.rrbridge_bidding_data.core.Main;
 import com.starsep.rrbridge_bidding_data.translation.Translatable;
 import com.starsep.rrbridge_bidding_data.translation.Translation;
 import com.starsep.rrbridge_bidding_data.translation.ITranslatable;
@@ -41,6 +42,7 @@ public class DirectoryChoosePanel extends JPanel implements ITranslatable {
         if (directoryDialog.showDialog(getParent(), directoryApproveText) == JFileChooser.APPROVE_OPTION) {
             File file = directoryDialog.getSelectedFile();
             directoryTextField.setText(file.toString());
+            Main.setWorkingDirectory(file);
         }
     }
 

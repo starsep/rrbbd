@@ -1,5 +1,6 @@
 package com.starsep.rrbridge_bidding_data.core;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +20,10 @@ public abstract class Arguments {
 
     private static void parseArguments() {
         if (args.length >= 1) {
-            Main.setWorkingDirectory(args[0]);
+            Main.setWorkingDirectory(new File(args[0]));
         }
         if (args.length >= 2) {
-            Main.setBWSFilename(args[1]);
+            Main.setBWSFile(new File(args[1]));
         }
         if (args.length >= 3) {
             int time = Integer.decode(args[2]);
