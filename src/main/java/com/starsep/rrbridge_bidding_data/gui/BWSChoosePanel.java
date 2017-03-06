@@ -1,21 +1,36 @@
 package com.starsep.rrbridge_bidding_data.gui;
 
-import com.starsep.rrbridge_bidding_data.translation.*;
+import com.starsep.rrbridge_bidding_data.core.BWSReader;
+import com.starsep.rrbridge_bidding_data.translation.ITranslatable;
+import com.starsep.rrbridge_bidding_data.translation.Translatable;
+import com.starsep.rrbridge_bidding_data.translation.Translation;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
+import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 
 public class BWSChoosePanel extends JPanel implements ITranslatable {
-    private JPanel bwsChoosePanel;
     private JButton chooseButton;
     private JTextField bwsTextField;
     private JLabel bwsLabel;
 
     BWSChoosePanel() {
         super();
+        setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+
+        bwsLabel = new JLabel();
+        add(bwsLabel);
+
+        bwsTextField = new JTextField();
+        bwsTextField.setColumns(35);
+        add(bwsTextField);
+
+        chooseButton = new JButton();
         chooseButton.addActionListener(e -> showBWSDialog());
-        add(bwsChoosePanel);
+        add(chooseButton);
+
         Translatable.add(this);
     }
 
@@ -44,6 +59,11 @@ public class BWSChoosePanel extends JPanel implements ITranslatable {
         if (bwsDialog.showDialog(getParent(), bwsApproveText) == JFileChooser.APPROVE_OPTION) {
             File file = bwsDialog.getSelectedFile();
             bwsTextField.setText(file.toString());
+            try {
+                new BWSReader(file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

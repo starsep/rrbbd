@@ -1,20 +1,36 @@
 package com.starsep.rrbridge_bidding_data.gui;
 
-import com.starsep.rrbridge_bidding_data.translation.*;
+import com.starsep.rrbridge_bidding_data.translation.Translatable;
+import com.starsep.rrbridge_bidding_data.translation.Translation;
+import com.starsep.rrbridge_bidding_data.translation.ITranslatable;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 
 public class DirectoryChoosePanel extends JPanel implements ITranslatable {
     private JTextField directoryTextField;
     private JButton chooseButton;
-    private JPanel directoryChoosePanel;
     private JLabel directoryLabel;
 
     DirectoryChoosePanel() {
         super();
+        setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+
+        directoryLabel = new JLabel();
+        directoryLabel.setText("RRBridge work directory:");
+        add(directoryLabel);
+
+        directoryTextField = new JTextField();
+        directoryTextField.setColumns(35);
+        directoryTextField.setEditable(false);
+        add(directoryTextField);
+
+        chooseButton = new JButton();
+        chooseButton.setText("Choose");
         chooseButton.addActionListener(e -> showDirectoryDialog());
-        add(directoryChoosePanel);
+        add(chooseButton);
+
         Translatable.add(this);
     }
 

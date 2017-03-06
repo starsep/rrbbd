@@ -1,8 +1,8 @@
 package com.starsep.rrbridge_bidding_data.core;
 
-import com.starsep.rrbridge_bidding_data.gui.MainGUI;
 import com.starsep.rrbridge_bidding_data.translation.Translatable;
 import com.starsep.rrbridge_bidding_data.translation.Translation;
+import com.starsep.rrbridge_bidding_data.gui.MainGUI;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -38,7 +38,7 @@ class Polish implements ITranslation {
         String result = "Użycie: \"wywołanie programu\" katalog_rrb plik_bws czas\n";
         result += "Gdzie:\n";
         result += "\twywołanie programu to albo \"java -jar jarFilename.jar\", albo\n";
-        result += "\t\t\"java com.starsep.rrbridge_bidding_data.core.Main\"\n";
+        result += "\t\t\"java Main\"\n";
         result += "\tkatalog_rrb to nazwa katalogu, w którym są pliki wygenerowane przez RRBridge\n";
         result += "\tplik_bws to nazwa pliku z bazą danych BWS zawierającą tabelę BiddingData z licytacją\n";
         result += "\tczas to czas [w sekundach], odczekiwany po każdym wygenerowaniu plików z licytacją\n";

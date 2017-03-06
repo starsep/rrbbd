@@ -1,7 +1,9 @@
 package com.starsep.rrbridge_bidding_data.gui;
 
+import com.starsep.rrbridge_bidding_data.translation.Translatable;
 import com.starsep.rrbridge_bidding_data.core.Main;
-import com.starsep.rrbridge_bidding_data.translation.*;
+import com.starsep.rrbridge_bidding_data.translation.ITranslatable;
+import com.starsep.rrbridge_bidding_data.translation.Translation;
 
 import javax.swing.*;
 

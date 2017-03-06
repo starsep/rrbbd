@@ -39,7 +39,7 @@ class English implements ITranslation {
         String result = "Usage: \"program execution\" rrb_directory bws_filename time\n";
         result += "Where:\n";
         result += "\tprogram execution is either \"java -jar jarFilename.jar\" or\n";
-        result += "\t\t\"java com.starsep.rrbridge_bidding_data.core.Main\"\n";
+        result += "\t\t\"java Main\"\n";
         result += "\trrb_directory is directory where RRBridge output is\n";
         result += "\tbws_filename is filename of BWS database containing BiddingData\n";
         result += "\ttime is time [in seconds] to wait after every files generation\n";
