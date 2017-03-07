@@ -4,10 +4,6 @@ var columns_number;
 
 var contract_column;
 
-function REMOVE_THIS() {
-    return '<table> <tr> <th> W </th> <th> N </th> <th> E </th> <th> S </th> </tr> <tr> <td> PASS </td> <td> 1 <img src="img/clubs.gif"/> </td> <td> PASS </td> <td> 1 <img src="img/hearts.gif"/> </td> </tr> <tr> <td> PASS </td> <td> 2 <img src="img/hearts.gif"/> </td> <td> PASS </td> <td> PASS </td> </tr> <tr> <td> PASS </td> <td> </td> <td> </td> <td> </td> </tr> </table>';
-}
-
 function count_columns() {
     columns_number = 0;
     contract_column = -1;
@@ -35,7 +31,9 @@ function show_bidding() {
     remove_bidding();
     var elem = $(this);
     // console.log("show bidding");
-    display_bidding(elem, REMOVE_THIS());
+    $.get('bid-1-1.html', function (data) {
+        display_bidding(elem, data);
+    });
 }
 
 
