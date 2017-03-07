@@ -18,6 +18,7 @@ targetCompatibility = 1.8
 mainClassName = 'com.starsep.rrbridge_bidding_data.core.Main'
 
 dependencies {
+    compile group: 'com.j2html', name: 'j2html', version: '0.88'
     compile group: 'com.healthmarketscience.jackcess', name: 'jackcess', version: '2.1.2'
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
