@@ -1,11 +1,7 @@
 package com.starsep.rrbridge_bidding_data.bidding;
 
-import com.google.gson.Gson;
-import com.starsep.rrbridge_bidding_data.core.Json;
-import com.starsep.rrbridge_bidding_data.core.Main;
 import com.starsep.rrbridge_bidding_data.io.Saver;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +29,6 @@ public class Bidding {
     }
 
     public void save() throws FileNotFoundException {
-        String text = Json.get().toJson(this);
-        Saver.save(text, filename());
+        Saver.save(toString(), filename());
     }
 }

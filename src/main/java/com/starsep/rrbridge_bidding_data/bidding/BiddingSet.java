@@ -1,6 +1,5 @@
 package com.starsep.rrbridge_bidding_data.bidding;
 
-import com.starsep.rrbridge_bidding_data.core.Json;
 import com.starsep.rrbridge_bidding_data.io.Saver;
 
 import java.io.FileNotFoundException;
@@ -40,8 +39,6 @@ public class BiddingSet {
     }
 
     public void save() throws FileNotFoundException {
-        String indexText = Json.get().toJson(index());
-        Saver.save(indexText, filename());
         for (Bidding bidding : biddingList) {
             bidding.save();
         }
