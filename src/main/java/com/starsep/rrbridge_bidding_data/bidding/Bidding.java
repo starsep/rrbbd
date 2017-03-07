@@ -14,24 +14,22 @@ public class Bidding {
     public static final String FILENAME_PREFIX = "bid";
     public static final String FILENAME_EXTENSION = ".json";
 
-    public int section;
     public int board;
     public int table;
     public List<Bid> bids;
 
-    public Bidding(int section, int board, int table) {
-        this.section = section;
+    public Bidding(int board, int table) {
         this.board = board;
         this.table = table;
         bids = new ArrayList<>();
     }
 
     public String filename() {
-        return FILENAME_PREFIX + "-" + board + "-" + section + "-" + table + FILENAME_EXTENSION;
+        return FILENAME_PREFIX + "-" + board +  "-" + table + FILENAME_EXTENSION;
     }
 
     public boolean sameBidding(Bidding bidding) {
-        return section == bidding.section && board == bidding.board && table == bidding.table;
+        return board == bidding.board && table == bidding.table;
     }
 
     public void save() throws FileNotFoundException {

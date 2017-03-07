@@ -37,9 +37,8 @@ public class BWSReader {
     }
 
     public Bidding biddingFromRow(Row row) {
-        int section = row.getShort("Section");
         int board = row.getShort("Board");
         int table = row.getShort("Table");
-        return new Bidding(section, board, table);
+        return new Bidding(board, table);
     }
 }
