@@ -1,5 +1,6 @@
 package com.starsep.rrbridge_bidding_data.core;
 
+import com.healthmarketscience.jackcess.Database;
 import com.healthmarketscience.jackcess.DatabaseBuilder;
 import com.healthmarketscience.jackcess.Row;
 import com.healthmarketscience.jackcess.Table;
@@ -9,23 +10,43 @@ import com.starsep.rrbridge_bidding_data.bidding.BiddingSet;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BWSReader {
     private final static String BIDDING_TABLE = "BiddingData";
+    private final static String ROUND_TABLE = "RoundData";
     private final File bws;
 
     public BWSReader(File file) throws IOException {
         bws = file;
     }
 
-    public BiddingSet getBiddingSet() throws IOException {
+    private List<RoundDataEntry> roundDataEntryList(Database database) throws IOException {
+        List<RoundDataEntry> result = new ArrayList<>();
+        Table roundDataTable = database.getTable(ROUND_TABLE);
+        for (Row row : roundDataTable) {
+            int section = row.getShort("Section");
+            int round = row.getShort("Round");
+            int table = row.getShort("Table");
+            int NS = row.getShort("NSPair");
+            int EW = row.getShort("EWPair");
+            result.add(new RoundDataEntry(section, round, table, NS, EW));
+        }
+        return result;
+    }
+
+    public BiddingSet getBiddingSet() throws Exception {
         BiddingSet result = new BiddingSet();
-        Table table = DatabaseBuilder.open(bws).getTable(BIDDING_TABLE);
-        for (Row row : table) {
+        Database database = DatabaseBuilder.open(bws);
+        List<RoundDataEntry> roundData = roundDataEntryList(database);
+        Table biddingTable = database.getTable(BIDDING_TABLE);
+        for (Row row : biddingTable) {
             Bid bid = bidFromRow(row);
             Bidding bidding = biddingFromRow(row);
             result.addBid(bidding, bid);
         }
+        result.applyRoundData(roundData);
         return result;
     }
 
@@ -37,8 +58,10 @@ public class BWSReader {
     }
 
     public Bidding biddingFromRow(Row row) {
+        int section = row.getShort("Section");
         int board = row.getShort("Board");
         int table = row.getShort("Table");
-        return new Bidding(board, table);
+        int round = row.getShort("Round");
+        return new Bidding(section, board, table, round);
     }
 }

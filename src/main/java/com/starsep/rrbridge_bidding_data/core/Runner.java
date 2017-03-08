@@ -17,7 +17,7 @@ public class Runner implements Runnable {
             BWSReader bwsReader = new BWSReader(Main.getBwsFile());
             BiddingSet biddingSet = bwsReader.getBiddingSet();
             biddingSet.save();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

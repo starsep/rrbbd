@@ -14,18 +14,30 @@ public class Bidding {
     public static final String FILENAME_PREFIX = "bid";
     public static final String FILENAME_EXTENSION = ".html";
 
+    public int section;
     public int board;
     public int table;
+    public int round;
+    public int NS;
+    public int EW;
     public List<Bid> bids;
 
-    public Bidding(int board, int table) {
+    public Bidding(int section, int board, int table, int round) {
+        this.section = section;
         this.board = board;
         this.table = table;
+        this.round = round;
+        NS = -1;
+        EW = -1;
         bids = new ArrayList<>();
     }
 
-    public String filename() {
-        return FILENAME_PREFIX + "-" + board +  "-" + table + FILENAME_EXTENSION;
+    private String filenameNS() {
+        return FILENAME_PREFIX + "-" + board +  "-" + NS + FILENAME_EXTENSION;
+    }
+
+    private String filenameEW() {
+        return FILENAME_PREFIX + "-" + board +  "-" + EW + FILENAME_EXTENSION;
     }
 
     public boolean sameBidding(Bidding bidding) {
@@ -73,6 +85,7 @@ public class Bidding {
 
 
     public void save() throws FileNotFoundException {
-        Saver.save(html().toString(), filename());
+        Saver.save(html().toString(), filenameNS());
+        Saver.save(html().toString(), filenameEW());
     }
 }

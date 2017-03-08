@@ -1,5 +1,6 @@
 package com.starsep.rrbridge_bidding_data.bidding;
 
+import com.starsep.rrbridge_bidding_data.core.RoundDataEntry;
 import com.starsep.rrbridge_bidding_data.io.Saver;
 
 import java.io.FileNotFoundException;
@@ -30,17 +31,26 @@ public class BiddingSet {
         biddingList.add(bidding);
     }
 
-    private List<String> index() {
-        List<String> result = new ArrayList<>();
-        for (Bidding bidding : biddingList) {
-            result.add(bidding.filename());
-        }
-        return result;
-    }
-
     public void save() throws FileNotFoundException {
         for (Bidding bidding : biddingList) {
             bidding.save();
+        }
+    }
+
+    public void applyRoundData(List<RoundDataEntry> roundData) throws Exception {
+        for (Bidding bidding : biddingList) {
+            for (RoundDataEntry roundDataEntry : roundData) {
+                if (bidding.section == roundDataEntry.section &&
+                        bidding.table == roundDataEntry.table &&
+                        bidding.round == roundDataEntry.round) {
+                    bidding.NS = roundDataEntry.NS;
+                    bidding.EW = roundDataEntry.EW;
+                    break;
+                }
+            }
+            if (bidding.NS == -1 || bidding.EW == -1) {
+                throw new Exception("RoundData missing!");
+            }
         }
     }
 }
