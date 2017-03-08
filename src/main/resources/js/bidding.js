@@ -30,8 +30,10 @@ function remove_bidding() {
 function show_bidding() {
     remove_bidding();
     var elem = $(this);
+    var board = elem.attr('data-board');
+    var pair = elem.attr('data-pair');
     // console.log("show bidding");
-    $.get('bid-1-1.html', function (data) {
+    $.get('bid-' + board + '-' + pair + '.html', function (data) {
         display_bidding(elem, data);
     });
 }
@@ -52,8 +54,8 @@ function display_bidding(element, bidding) {
 }
 /////////////////
 
-function contract_html() {
-    var result = ' <a href="javascript:void(0)" class="biddingLink">';
+function contract_html(pair) {
+    var result = ' <a href="javascript:void(0)" class="biddingLink" data-pair="' + pair + '" data-board="' + selected + '">';
     result += '<img src="img/link.png" />';
     result += '</a>';
     return result;
@@ -61,10 +63,11 @@ function contract_html() {
 
 function inject_contract(row) {
     var contract_td = row.children().first();
+    var pair = contract_td.children().first().html();
     for (var i = 0; i < contract_column; i++) {
         contract_td = contract_td.next();
     }
-    contract_td.html(contract_td.html() + contract_html());
+    contract_td.html(contract_td.html() + contract_html(pair));
 }
 
 function inject_contracts() {
