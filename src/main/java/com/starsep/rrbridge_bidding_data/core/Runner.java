@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class Runner implements Runnable {
-    private void updateJSONs() {
+    private void saveHTMLs() {
         try {
             BWSReader bwsReader = new BWSReader(Main.getBwsFile());
             BiddingSet biddingSet = bwsReader.getBiddingSet();
@@ -45,6 +45,6 @@ public class Runner implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        updateJSONs();
+        saveHTMLs();
     }
 }

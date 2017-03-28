@@ -15,9 +15,11 @@ public abstract class CallFactory {
     public static Call create(String s) {
         switch (s) {
             case PASS:
+                return new StringCall(s, "!pas");
             case DOUBLE:
+                return new StringCall(s, "!x");
             case REDOUBLE:
-                return new StringCall(s);
+                return new StringCall(s, "!xx");
         }
         if (s.length() >= 2 && Character.isDigit(s.charAt(0))) {
             int v = Character.getNumericValue(s.charAt(0));

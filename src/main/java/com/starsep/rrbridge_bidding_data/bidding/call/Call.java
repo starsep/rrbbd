@@ -1,7 +1,6 @@
 package com.starsep.rrbridge_bidding_data.bidding.call;
 
-import j2html.tags.DomContent;
+import com.starsep.rrbridge_bidding_data.bidding.IHtml;
 
-public interface Call {
-    DomContent html();
+public interface Call extends IHtml {
 }

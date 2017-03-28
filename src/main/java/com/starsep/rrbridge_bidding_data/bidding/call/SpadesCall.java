@@ -9,4 +9,9 @@ class SpadesCall extends ContractCall {
     protected String imgSrc() {
         return "img/spades.gif";
     }
+
+    @Override
+    protected String forumColor() {
+        return "s";
+    }
 }

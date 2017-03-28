@@ -9,4 +9,9 @@ class DiamondsCall extends ContractCall {
     protected String imgSrc() {
         return "img/diamonds.gif";
     }
+
+    @Override
+    protected String forumColor() {
+        return "d";
+    }
 }

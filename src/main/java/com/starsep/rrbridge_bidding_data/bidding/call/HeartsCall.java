@@ -9,4 +9,9 @@ class HeartsCall extends ContractCall {
     protected String imgSrc() {
         return "img/hearts.gif";
     }
+
+    @Override
+    protected String forumColor() {
+        return "h";
+    }
 }

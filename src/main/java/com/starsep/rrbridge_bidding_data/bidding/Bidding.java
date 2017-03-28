@@ -7,11 +7,11 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import static j2html.TagCreator.*;
 
-public class Bidding {
-    public static final String FILENAME_PREFIX = "bid";
+public class Bidding implements IHtml {
+    public static final String BIDDING_PREFIX = "bid";
+    public static final String FORUM_PREFIX = "forum";
     public static final String FILENAME_EXTENSION = ".html";
 
     public int section;
@@ -33,26 +33,34 @@ public class Bidding {
     }
 
     private String filenameNS() {
-        return FILENAME_PREFIX + "-" + board +  "-" + NS + FILENAME_EXTENSION;
+        return BIDDING_PREFIX + "-" + board + "-" + NS + FILENAME_EXTENSION;
     }
 
     private String filenameEW() {
-        return FILENAME_PREFIX + "-" + board +  "-" + EW + FILENAME_EXTENSION;
+        return BIDDING_PREFIX + "-" + board + "-" + EW + FILENAME_EXTENSION;
+    }
+
+    private String filenameForumNS() {
+        return FORUM_PREFIX + "-" + board + "-" + NS + FILENAME_EXTENSION;
+    }
+
+    private String filenameForumEW() {
+        return FORUM_PREFIX + "-" + board + "-" + EW + FILENAME_EXTENSION;
     }
 
     public boolean sameBidding(Bidding bidding) {
         return board == bidding.board && table == bidding.table;
     }
 
-    private void addEmptyCalls(ArrayList<DomContent> list) {
+    private void addEmptyCalls(ArrayList<DomContent> list, DomContent empty) {
         if (bids.size() > 0) {
             switch (bids.get(0).bidder) {
                 case 'S':
-                    list.add(td());
+                    list.add(empty);
                 case 'E':
-                    list.add(td());
+                    list.add(empty);
                 case 'N':
-                    list.add(td());
+                    list.add(empty);
                 case 'W':
                     break;
                 default:
@@ -68,7 +76,7 @@ public class Bidding {
     public DomContent html() {
         ArrayList<DomContent> rows = new ArrayList<>();
         ArrayList<DomContent> lastRow = new ArrayList<>();
-        addEmptyCalls(lastRow);
+        addEmptyCalls(lastRow, td());
         for (Bid bid : bids) {
             if (lastRow.size() >= 4) {
                 rows.add(tr().with(lastRow));
@@ -79,13 +87,31 @@ public class Bidding {
         if (!lastRow.isEmpty()) {
             rows.add(tr().with(lastRow));
         }
-        return table().with(tr().with(th("W"), th("N"), th("E"), th("S"))).with(rows);
+        DomContent header = tr().with(th("W"), th("N"), th("E"), th("S"));
+        return table().with(header).with(rows);
     }
 
+    @Override
+    public DomContent forumHtml() {
+        ArrayList<DomContent> content = new ArrayList<>();
+        addEmptyCalls(content, text("!nic"));
+        int size = content.size();
+        for (Bid bid : bids) {
+            content.add(bid.forumHtml());
+            size++;
+            if (size % 4 == 0) {
+                content.add(br());
+            }
+        }
+        DomContent header = text("!top");
+        return code().with(header).with(br()).with(content);
+    }
 
 
     public void save() throws FileNotFoundException {
         Saver.save(html().toString(), filenameNS());
         Saver.save(html().toString(), filenameEW());
+        Saver.save(forumHtml().toString(), filenameForumEW());
+        Saver.save(forumHtml().toString(), filenameForumNS());
     }
 }

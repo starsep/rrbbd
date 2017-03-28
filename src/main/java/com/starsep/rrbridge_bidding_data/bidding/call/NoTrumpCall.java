@@ -9,4 +9,9 @@ class NoTrumpCall extends ContractCall {
     protected String imgSrc() {
         return "img/notrump.gif";
     }
+
+    @Override
+    protected String forumColor() {
+        return "nt";
+    }
 }

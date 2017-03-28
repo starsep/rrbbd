@@ -9,4 +9,9 @@ class ClubsCall extends ContractCall {
     protected String imgSrc() {
         return "img/clubs.gif";
     }
+
+    @Override
+    protected String forumColor() {
+        return "c";
+    }
 }

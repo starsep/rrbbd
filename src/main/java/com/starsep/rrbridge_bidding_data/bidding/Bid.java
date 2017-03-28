@@ -4,7 +4,7 @@ import com.starsep.rrbridge_bidding_data.bidding.call.Call;
 import com.starsep.rrbridge_bidding_data.bidding.call.CallFactory;
 import j2html.tags.DomContent;
 
-public class Bid {
+public class Bid implements IHtml {
     public int id;
     public Call call;
     public char bidder;
@@ -15,7 +15,13 @@ public class Bid {
         this.bidder = bidder;
     }
 
-    DomContent html() {
+    @Override
+    public DomContent html() {
         return call.html();
+    }
+
+    @Override
+    public DomContent forumHtml() {
+        return call.forumHtml();
     }
 }
