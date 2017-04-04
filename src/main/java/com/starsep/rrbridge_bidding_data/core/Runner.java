@@ -27,11 +27,14 @@ public class Runner implements Runnable {
     private static final String CSS_OUTPUT = File.separator + "bidding.css";
     private static final String LINK_RESOURCE = "/img/link.png";
     private static final String LINK_OUTPUT = File.separator + "img" + File.separator + "link.png";
+    private static final String FORUM_RESOURCE = "/img/forum.png";
+    private static final String FORUM_OUTPUT = File.separator + "img" + File.separator + "forum.png";
 
     private void copyResources() throws IOException {
         ResourceFileCopy.copyResourceFile(JS_RESOURCE, JS_OUTPUT);
         ResourceFileCopy.copyResourceFile(CSS_RESOURCE, CSS_OUTPUT);
         ResourceFileCopy.copyResourceFile(LINK_RESOURCE, LINK_OUTPUT);
+        ResourceFileCopy.copyResourceFile(FORUM_RESOURCE, FORUM_OUTPUT);
     }
 
 
