@@ -3,6 +3,10 @@
 
 // based on https://github.com/emkael/jfrpary-bidding-data/blob/master/res/javas/bidding.js
 
+/*global $, jQuery, alert*/
+
+"use strict";
+
 var standardGet;
 
 var columnsNumber;
@@ -24,14 +28,16 @@ function removePopups() {
     $(".biddingPopup").remove();
 }
 
-function showBidding() {
-    var elem = $(this);
-    showPopup('bid-', elem);
-}
-
-function showForum() {
-    var elem = $(this);
-    showPopup('forum-', elem);
+function displayPopup(element, content) {
+    var popup = $('<div class="biddingPopup"></div>');
+    popup.css({
+        'position': 'absolute',
+        'width': '250px',
+        'left': element.offset().left + element.width(),
+        'top': element.offset().top
+    });
+    popup.html(content);
+    $('body').append(popup);
 }
 
 function showPopup(prefix, elem) {
@@ -43,16 +49,14 @@ function showPopup(prefix, elem) {
     });
 }
 
-function displayPopup(element, content) {
-    var popup = $('<div class="biddingPopup"></div>');
-    popup.css({
-        'position': 'absolute',
-        'width': '250px',
-        'left': element.offset().left + element.width(),
-        'top': element.offset().top
-    });
-    popup.html(content);
-    $('body').append(popup);
+function showBidding() {
+    var elem = $(this);
+    showPopup('bid-', elem);
+}
+
+function showForum() {
+    var elem = $(this);
+    showPopup('forum-', elem);
 }
 
 function contractHtml(pair, board) {
