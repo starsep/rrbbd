@@ -25,6 +25,7 @@ public class DirectoryChoosePanel extends JPanel implements ITranslatable {
         directoryTextField = new JTextField();
         directoryTextField.setColumns(35);
         directoryTextField.setEditable(false);
+        directoryTextField.setText(Main.getWorkingDirectory().toString());
         add(directoryTextField);
 
         chooseButton = new JButton();

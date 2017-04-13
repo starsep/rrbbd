@@ -26,6 +26,7 @@ public class BWSChoosePanel extends JPanel implements ITranslatable {
 
         bwsTextField = new JTextField();
         bwsTextField.setColumns(35);
+        bwsTextField.setText(Main.getBwsFile().toString());
         add(bwsTextField);
 
         chooseButton = new JButton();
