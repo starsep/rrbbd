@@ -26,4 +26,8 @@ public interface ITranslation {
     String error();
 
     String run();
+
+    String everyNSeconds(int n);
+
+    String justOnce();
 }

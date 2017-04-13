@@ -49,6 +49,8 @@ class English implements ITranslation {
         result += "\t" + Arguments.ENGLISH_FLAG + " = English language\n";
         result += "\t" + Arguments.POLISH_FLAG + " = Polish language\n";
         result += "\t" + Arguments.NO_GUI_FLAG + " = launch " + consoleMode() + "\n";
+        result += "\t" + Arguments.VERSION_FLAG + " = show program version\n";
+        result += "\t" + Arguments.HELP_FLAG + " = show this help \n";
         return result;
     }
 
@@ -80,5 +82,15 @@ class English implements ITranslation {
     @Override
     public String run() {
         return "Run";
+    }
+
+    @Override
+    public String everyNSeconds(int n) {
+        return "Every " + n + " seconds";
+    }
+
+    @Override
+    public String justOnce() {
+        return "Just once";
     }
 }

@@ -47,6 +47,8 @@ class Polish implements ITranslation {
         result += "\t" + Arguments.ENGLISH_FLAG + " = język angielski\n";
         result += "\t" + Arguments.POLISH_FLAG + " = język polski\n";
         result += "\t" + Arguments.NO_GUI_FLAG + " = uruchom " + consoleMode() + "\n";
+        result += "\t" + Arguments.VERSION_FLAG + " = wersja programu\n";
+        result += "\t" + Arguments.HELP_FLAG + " = pokaż pomoc\n";
         return result;
     }
 
@@ -78,5 +80,15 @@ class Polish implements ITranslation {
     @Override
     public String run() {
         return "Uruchom";
+    }
+
+    @Override
+    public String everyNSeconds(int n) {
+        return "Co " + n + " sekund";
+    }
+
+    @Override
+    public String justOnce() {
+        return "Tylko raz";
     }
 }
