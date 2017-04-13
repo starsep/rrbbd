@@ -21,6 +21,8 @@ public class Main {
 
     private static Locale locale;
     private static boolean guiEnabled = true;
+    private static boolean showHelp = false;
+    private static boolean showVersion = false;
     private static File workingDirectory = null;
     private static File bwsFile = null;
     private static int waitTime = DEFAULT_WAIT_TIME;
@@ -34,6 +36,14 @@ public class Main {
     }
 
     private static void launch() {
+        if (showHelp) {
+            printUsage();
+            return;
+        }
+        if (showVersion) {
+            System.out.println(PROGRAM_NAME + " v" + getVersion());
+            return;
+        }
         launchingInfo();
         if (guiEnabled) {
             MainGUI.launchGUI();
@@ -49,7 +59,6 @@ public class Main {
             System.out.println("For English use " + Arguments.ENGLISH_FLAG);
         }
         System.out.println("");
-        printUsage();
     }
 
     private static void printUsage() {
@@ -74,7 +83,7 @@ public class Main {
     }
 
     private static void initBuildProperties() {
-        buildProperties =  new Properties();
+        buildProperties = new Properties();
         InputStream input = null;
 
         try {
@@ -126,5 +135,13 @@ public class Main {
 
     public static int getWaitTime() {
         return waitTime;
+    }
+
+    public static void showHelp() {
+        showHelp = true;
+    }
+
+    public static void showVersion() {
+        showVersion = true;
     }
 }

@@ -8,6 +8,8 @@ public abstract class Arguments {
     public static final String NO_GUI_FLAG = "--no-gui";
     public static final String ENGLISH_FLAG = "--english";
     public static final String POLISH_FLAG = "--polish";
+    public static final String HELP_FLAG = "--help";
+    public static final String VERSION_FLAG = "--version";
     private static final int ARGUMENTS_NUMBER = 3;
 
     private static String[] args;
@@ -46,13 +48,22 @@ public abstract class Arguments {
             case POLISH_FLAG:
                 Main.setPolish();
                 break;
+            case HELP_FLAG:
+                Main.showHelp();
+                break;
+            case VERSION_FLAG:
+                Main.showVersion();
+                break;
+            default:
+                System.err.println(String.format("Unknown flag %s", flag));
+                break;
         }
     }
 
     private static void eraseFlags() {
         List<String> nonFlagArguments = new ArrayList<>();
         for (String arg : args) {
-            if (!arg.startsWith("-")) {
+            if (!arg.startsWith("--")) {
                 nonFlagArguments.add(arg);
             } else {
                 checkFlag(arg);
