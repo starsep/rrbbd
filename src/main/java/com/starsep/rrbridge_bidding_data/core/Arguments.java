@@ -21,12 +21,8 @@ public abstract class Arguments {
     }
 
     private static void parseArguments() {
-        if (args.length >= 1) {
-            Main.setWorkingDirectory(new File(args[0]));
-        }
-        if (args.length >= 2) {
-            Main.setBWSFile(new File(args[1]));
-        }
+        Main.setWorkingDirectory(new File(args.length >= 1 ? args[0] : ""));
+        Main.setBWSFile(new File(args.length >= 2 ? args[1] : ""));
         if (args.length >= 3) {
             int time = Integer.decode(args[2]);
             Main.setWaitTime(time);

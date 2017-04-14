@@ -27,7 +27,7 @@ public class RunPanel extends JPanel implements ITranslatable {
         int time = Main.getWaitTime();
         for (int t : DEFAULT_INTERVALS) {
             if (t == time) {
-                intervals = Arrays.copyOf(DEFAULT_INTERVALS, DEFAULT_INTERVALS.length);
+                intervals = DEFAULT_INTERVALS.clone();
                 return;
             }
         }
