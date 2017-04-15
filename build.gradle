@@ -3,10 +3,11 @@ plugins {
 }
 
 group 'com.starsep'
-version '0.3.1'
+version '0.3.2'
 
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'checkstyle'
 
 repositories {
     mavenCentral()
@@ -15,13 +16,18 @@ repositories {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-mainClassName = 'com.starsep.rrbridge_bidding_data.core.Main'
+mainClassName = 'com.starsep.rrbbd.core.Main'
+
+configurations {
+    checkstyleOverride
+}
 
 dependencies {
     compile group: 'org.apache.commons', name: 'commons-io', version: '1.3.2'
     compile group: 'com.j2html', name: 'j2html', version: '0.88'
     compile group: 'com.healthmarketscience.jackcess', name: 'jackcess', version: '2.1.2'
     testCompile group: 'junit', name: 'junit', version: '4.11'
+    checkstyleOverride('com.puppycrawl.tools:checkstyle:7.6.1')
 }
 
 jar {
@@ -56,4 +62,12 @@ task createBuildInfoFile(dependsOn: processResources) << {
 }
 classes {
     dependsOn createBuildInfoFile
+}
+
+checkstyle {
+    configFile = new File(rootDir, "checkstyle.xml")
+}
+
+tasks.withType(Checkstyle) {
+    checkstyleClasspath = project.configurations.checkstyleOverride
 }
