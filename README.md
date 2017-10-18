@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/starsep/rrbbd.svg?token=pEpks3xQCroxuTSsHPm9&branch=master)](https://travis-ci.com/starsep/rrbbd)
+
 # English README
 ## Usage
 ```
